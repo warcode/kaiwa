@@ -1378,7 +1378,7 @@ button.secondary:hover:not(:disabled) {
 }
 .messages .messageWrapper .message_header .date {
   display: inline-block;
-  color: #babbbf;
+  color: black;
   font-size: 12px;
   width: 60px;
   line-height: 22px;
@@ -1388,7 +1388,7 @@ button.secondary:hover:not(:disabled) {
 .messages .message {
   font-size: 15px;
   line-height: 22px;
-  color: #3d3c40;
+  color: black;
   margin: 0px 0px 2px 0px;
   display: block;
   min-width: 20px;
@@ -1401,7 +1401,7 @@ button.secondary:hover:not(:disabled) {
   visibility: visible;
 }
 .messages .message:not(.mine) {
-  color: #555459;
+  color: black;
 }
 .messages .message.pending {
   color: #cfcfd3;
