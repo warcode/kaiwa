@@ -3,7 +3,7 @@ if firstEl
   - messageClasses += ' first'
 
 .message(id='chat'+message.cid, class=messageClasses)
-  .date(title=messageDate.format('{Dow}, {yyyy}.{MM}.{dd} - {hh}.{mm}.{ss}')) #{messageDate.format('{hh}.{mm}.{ss}')}
+  .date(title=messageDate.format('{Dow}, {yyyy}.{MM}.{dd} - {hh}:{mm}:{ss}')) #{messageDate.format('{hh}:{mm}:{ss}')}
   p.body !{message.processedBody}
   - var urls = message.urls
   section.embeds
