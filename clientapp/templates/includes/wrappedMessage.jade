@@ -5,5 +5,5 @@ li
   .messageWrapper
     .message_header
       .name #{message.sender.displayName}
-      .date(title=messageDate.format('{Dow}, {yyyy}.{MM}.{dd} - {hh}.{mm}.{ss}')) #{messageDate.format('{hh}.{mm}.{ss}')}
+      .date(title=messageDate.format('{Dow}, {yyyy}.{MM}.{dd} - {hh}:{mm}:{ss}')) #{messageDate.format('{hh}:{mm}:{ss}')}
     include bareMessage
