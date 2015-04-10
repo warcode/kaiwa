@@ -13,7 +13,7 @@ $('#loginbox form').on('submit', function (e) {
         transport = 'bosh';
     } else if (connURL.indexOf('ws') === 0) {
         wsURL = connURL;
-        transport = 'websocket';
+        transport = 'old-websocket';
     }
 
     localStorage.config = JSON.stringify({
