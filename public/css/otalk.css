@@ -1944,6 +1944,7 @@ rgba(0,0,0,0.7)
 #topbar.connected {
   background-color: #f7f7f7;
   z-index: 100;
+  box-shadow: 0px 0px 5px grey;
 }
 #topbar.connected #connectionStatus {
   display: none;
