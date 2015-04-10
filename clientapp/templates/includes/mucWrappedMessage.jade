@@ -6,5 +6,5 @@ li
     .message_header
       .name #{message.sender.getName(message.from.full)}
       .nickname #{message.sender.getNickname(message.from.full)}
-      .date(title=messageDate.format('{Dow}, {yyyy}.{MM}.{dd} - {hh}:{mm}:{ss}')) #{messageDate.format('{hh}:{mm}:{ss}')}
+      .date(title=messageDate.format('{Dow}, {yyyy}.{MM}.{dd} - {HH}:{mm}:{ss}')) #{messageDate.format('{HH}:{mm}:{ss}')}
     include mucBareMessage
