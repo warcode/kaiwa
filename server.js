@@ -6,7 +6,7 @@ var Moonboots = require('moonboots-express');
 var config = require('getconfig');
 var templatizer = require('templatizer');
 var async = require('async');
-var LDAP = require('LDAP');
+var LDAP;
 
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
