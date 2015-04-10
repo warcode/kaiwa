@@ -42,11 +42,11 @@ exports.includes.bareMessage = function anonymous(locals) {
             "class": true,
             id: true
         }) + "><div" + jade.attrs({
-            title: messageDate.format("{Dow}, {MM}/{dd}/{yyyy} - {h}:{mm} {Tt}"),
+            title: messageDate.format("{Dow}, {yyyy}.{MM}.{dd} - {hh}:{mm}:{ss}"),
             "class": "date"
         }, {
             title: true
-        }) + ">" + jade.escape((jade.interp = messageDate.format("{h}:{mm} {tt}")) == null ? "" : jade.interp) + '</div><p class="body">' + ((jade.interp = message.processedBody) == null ? "" : jade.interp) + "</p>");
+        }) + ">" + jade.escape((jade.interp = messageDate.format("{hh}:{mm}:{ss}")) == null ? "" : jade.interp) + '</div><p class="body">' + ((jade.interp = message.processedBody) == null ? "" : jade.interp) + "</p>");
         var urls = message.urls;
         buf.push('<section class="embeds">');
         (function() {
@@ -258,11 +258,11 @@ exports.includes.mucBareMessage = function anonymous(locals) {
             "class": true,
             id: true
         }) + "><div" + jade.attrs({
-            title: messageDate.format("{Dow}, {MM}/{dd}/{yyyy} - {h}:{mm} {Tt}"),
+            title: messageDate.format("{Dow}, {yyyy}.{MM}.{dd} - {hh}:{mm}:{ss}"),
             "class": "date"
         }, {
             title: true
-        }) + ">" + jade.escape((jade.interp = messageDate.format("{h}:{mm} {tt}")) == null ? "" : jade.interp) + '</div><p class="body">' + ((jade.interp = message.processedBody) == null ? "" : jade.interp) + "</p>");
+        }) + ">" + jade.escape((jade.interp = messageDate.format("{h}:{mm}:{ss}")) == null ? "" : jade.interp) + '</div><p class="body">' + ((jade.interp = message.processedBody) == null ? "" : jade.interp) + "</p>");
         var urls = message.urls;
         buf.push('<section class="embeds">');
         (function() {
@@ -347,11 +347,11 @@ exports.includes.mucWrappedMessage = function anonymous(locals) {
             alt: true,
             "data-placement": true
         }) + '/></a></div><div class="messageWrapper"><div class="message_header"><div class="name">' + jade.escape((jade.interp = message.sender.getName(message.from.full)) == null ? "" : jade.interp) + '</div><div class="nickname">' + jade.escape((jade.interp = message.sender.getNickname(message.from.full)) == null ? "" : jade.interp) + "</div><div" + jade.attrs({
-            title: messageDate.format("{Dow}, {MM}/{dd}/{yyyy} - {h}:{mm} {Tt}"),
+            title: messageDate.format("{Dow}, {yyyy}.{MM}.{dd} - {hh}:{mm}:{ss}"),
             "class": "date"
         }, {
             title: true
-        }) + ">" + jade.escape((jade.interp = messageDate.format("{h}:{mm} {tt}")) == null ? "" : jade.interp) + "</div></div>");
+        }) + ">" + jade.escape((jade.interp = messageDate.format("{hh}:{mm}:{ss}")) == null ? "" : jade.interp) + "</div></div>");
         var messageClasses = message.classList;
         if (firstEl) {
             messageClasses += " first";
@@ -363,11 +363,11 @@ exports.includes.mucWrappedMessage = function anonymous(locals) {
             "class": true,
             id: true
         }) + "><div" + jade.attrs({
-            title: messageDate.format("{Dow}, {MM}/{dd}/{yyyy} - {h}:{mm} {Tt}"),
+            title: messageDate.format("{Dow}, {yyyy}.{MM}.{dd} - {hh}:{mm}:{ss}"),
             "class": "date"
         }, {
             title: true
-        }) + ">" + jade.escape((jade.interp = messageDate.format("{h}:{mm} {tt}")) == null ? "" : jade.interp) + '</div><p class="body">' + ((jade.interp = message.processedBody) == null ? "" : jade.interp) + "</p>");
+        }) + ">" + jade.escape((jade.interp = messageDate.format("{hh}:{mm}:{ss}")) == null ? "" : jade.interp) + '</div><p class="body">' + ((jade.interp = message.processedBody) == null ? "" : jade.interp) + "</p>");
         var urls = message.urls;
         buf.push('<section class="embeds">');
         (function() {
@@ -434,11 +434,11 @@ exports.includes.wrappedMessage = function anonymous(locals) {
             alt: true,
             "data-placement": true
         }) + '/></a></div><div class="messageWrapper"><div class="message_header"><div class="name">' + jade.escape((jade.interp = message.sender.displayName) == null ? "" : jade.interp) + "</div><div" + jade.attrs({
-            title: messageDate.format("{Dow}, {MM}/{dd}/{yyyy} - {h}:{mm} {Tt}"),
+            title: messageDate.format("{Dow}, {yyyy}.{MM}.{dd} - {hh}:{mm}:{ss}"),
             "class": "date"
         }, {
             title: true
-        }) + ">" + jade.escape((jade.interp = messageDate.format("{h}:{mm} {tt}")) == null ? "" : jade.interp) + "</div></div>");
+        }) + ">" + jade.escape((jade.interp = messageDate.format("{hh}:{mm}:{ss}")) == null ? "" : jade.interp) + "</div></div>");
         var messageClasses = message.classList;
         if (firstEl) {
             messageClasses += " first";
@@ -450,11 +450,11 @@ exports.includes.wrappedMessage = function anonymous(locals) {
             "class": true,
             id: true
         }) + "><div" + jade.attrs({
-            title: messageDate.format("{Dow}, {MM}/{dd}/{yyyy} - {h}:{mm} {Tt}"),
+            title: messageDate.format("{Dow}, {yyyy}.{MM}.{dd} - {hh}:{mm}:{ss}"),
             "class": "date"
         }, {
             title: true
-        }) + ">" + jade.escape((jade.interp = messageDate.format("{h}:{mm} {tt}")) == null ? "" : jade.interp) + '</div><p class="body">' + ((jade.interp = message.processedBody) == null ? "" : jade.interp) + "</p>");
+        }) + ">" + jade.escape((jade.interp = messageDate.format("{hh}:{mm}:{ss}")) == null ? "" : jade.interp) + '</div><p class="body">' + ((jade.interp = message.processedBody) == null ? "" : jade.interp) + "</p>");
         var urls = message.urls;
         buf.push('<section class="embeds">');
         (function() {
