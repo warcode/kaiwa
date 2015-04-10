@@ -1305,7 +1305,6 @@ button.secondary:hover:not(:disabled) {
 .messages li .messageAvatar {
   display: inline-block;
   outline: none;
-  box-shadow: 0px 0px 20px gray;
 }
 .messages li .messageAvatar img {
   width: 36px;
