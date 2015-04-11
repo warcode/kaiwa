@@ -167,7 +167,7 @@ module.exports = BaseCollection.extend({
                         {
                             app.mucInfos.push(mucInfo);
                             console.log(mucInfo);
-                            onsole.log(app.mucInfos);
+                            console.log(app.mucInfos);
                         }
 
                       }).then(function() {
