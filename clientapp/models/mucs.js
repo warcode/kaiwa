@@ -94,8 +94,6 @@ module.exports = BaseCollection.extend({
 
                         if(membersOnly)
                         {
-                            var working = true;
-
                             async.parallel([
                                 function(callback) {
                                     client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'member' } ] }, function (err, res) {
@@ -154,12 +152,7 @@ module.exports = BaseCollection.extend({
                                 if(results.indexOf('true') > -1) {
                                     app.mucInfos.push(mucInfo);
                                 }
-                                working = false;
                             });
-
-                            while(working) {
-
-                            }
                         }
                         else
                         {
