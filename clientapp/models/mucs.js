@@ -63,6 +63,26 @@ module.exports = BaseCollection.extend({
         if (SERVER_CONFIG.muc) {
             if (client.sessionStarted) {
 
+                client.getBookmarks(function (err, res) {
+                    if (err) return;
+    
+                    var mucs = res.privateStorage.bookmarks.conferences;
+                    mucs.forEach(function (muc) {
+
+                        var mucInfo = {
+                          id: muc.jid.full,
+                          name: muc.name,
+                          jid: muc.jid,
+                          nick: me.nick,
+                          autoJoin: true,
+                          persistent: true
+                        };
+
+                        app.mucInfos.push(mucInfo);
+                    });
+                });
+
+
                 var rooms = [];
                 client.getDiscoItems(SERVER_CONFIG.muc, '', function (err, res) {
                     if (err) return;
