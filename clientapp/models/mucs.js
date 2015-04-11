@@ -94,58 +94,61 @@ module.exports = BaseCollection.extend({
 
                         if(membersOnly)
                         {
-							async.parallel([
-								function(callback) {
-			                        client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'member' } ] }, function (err, res) {
-			                        	if(err) {
-			                        		console.log(err);
-			                        		callback(null, false);
-			                        	}
-									    var members = res.mucAdmin.items.map(function (item) {
-									        return item.jid.bare;
-									    });
-									    var amMember = members.indexOf(client.jid.bare) > -1;
-									    callback(null, amMember);
-									})
-		                    	},
-		                    	function(callback) {
-			                        client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'admin' } ] }, function (err, res) {
-			                        	if(err) {
-			                        		console.log(err);
-			                        		callback(null, false);
-			                        	}
-									    var members = res.mucAdmin.items.map(function (item) {
-									        return item.jid.bare;
-									    });
-									    var amMember = members.indexOf(client.jid.bare) > -1;
-									    callback(null, amMember);
-									})
-		                    	},
-		                    	function(callback) {
-			                        client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'owner' } ] }, function (err, res) {
-			                        	if(err) {
-			                        		console.log(err);
-			                        		callback(null, false);
-			                        	}
-									    var members = res.mucAdmin.items.map(function (item) {
-									        return item.jid.bare;
-									    });
-									    var amMember = members.indexOf(client.jid.bare) > -1;
-									    callback(null, amMember);
-									})
-		                    	}
-							],
-							function(err, results){
-								if(results.indexOf('true') > -1)
-								{
-                        			app.mucInfos.push(mucInfo);
-								}
-							});
-						}
-						else
-						{
-                        	app.mucInfos.push(mucInfo);
-						}
+                            async.parallel([
+                                function(callback) {
+                                    client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'member' } ] }, function (err, res) {
+                                        if(err) {
+                                            console.log(err);
+                                            callback(null, false);
+                                        }
+                                        console.log(res);
+                                        var members = res.mucAdmin.items.map(function (item) {
+                                            return item.jid.bare;
+                                        });
+                                        var amMember = members.indexOf(client.jid.bare) > -1;
+                                        callback(null, amMember);
+                                    })
+                                },
+                                function(callback) {
+                                    client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'admin' } ] }, function (err, res) {
+                                        if(err) {
+                                            console.log(err);
+                                            callback(null, false);
+                                        }
+                                        console.log(res);
+                                        var members = res.mucAdmin.items.map(function (item) {
+                                            return item.jid.bare;
+                                        });
+                                        var amMember = members.indexOf(client.jid.bare) > -1;
+                                        callback(null, amMember);
+                                    })
+                                },
+                                function(callback) {
+                                    client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'owner' } ] }, function (err, res) {
+                                        if(err) {
+                                            console.log(err);
+                                            callback(null, false);
+                                        }
+                                        console.log(res);
+                                        var members = res.mucAdmin.items.map(function (item) {
+                                            return item.jid.bare;
+                                        });
+                                        var amMember = members.indexOf(client.jid.bare) > -1;
+                                        callback(null, amMember);
+                                    })
+                                }
+                            ],
+                            function(err, results){
+                                if(results.indexOf('true') > -1)
+                                {
+                                    app.mucInfos.push(mucInfo);
+                                }
+                            });
+                        }
+                        else
+                        {
+                            app.mucInfos.push(mucInfo);
+                        }
 
                       }).then(function() {
                         if (cb && roomNum == rooms.length) cb();
@@ -154,10 +157,6 @@ module.exports = BaseCollection.extend({
                 }).then(function() {
                     if (cb && !rooms.length) cb();
                 });
-
-
-
-
 
             } else {
                 app.whenConnected(function () {
