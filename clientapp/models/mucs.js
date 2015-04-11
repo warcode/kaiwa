@@ -142,7 +142,7 @@ module.exports = BaseCollection.extend({
 								})
 							],
 							function(err, results){
-								if(results.indexOf('true') > -1;)
+								if(results.indexOf('true') > -1)
 								{
 			                        var existing = app.mucInfos.map(function(a) {return a.jid;});
 	                        		if(existing.indexOf(mucInfo.jid) == -1) {
