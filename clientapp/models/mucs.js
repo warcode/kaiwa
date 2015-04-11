@@ -98,7 +98,7 @@ module.exports = BaseCollection.extend({
                                 function(callback) {
                                     client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'member' } ] }, function (err, res) {
                                         if(err) {
-                                            callback(null, false);
+                                            callback(null, 'false');
                                         }
                                         if(res.mucAdmin.items)
                                         {
@@ -106,18 +106,18 @@ module.exports = BaseCollection.extend({
                                                 return item.jid.bare;
                                             });
                                             var amMember = members.indexOf(client.jid.bare) > -1;
-                                            callback(null, amMember);
+                                            callback(null, amMember ? 'true' : 'false');
                                         }
                                         else
                                         {
-                                            callback(null, false);
+                                            callback(null, 'false');
                                         }
                                     })
                                 },
                                 function(callback) {
                                     client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'admin' } ] }, function (err, res) {
                                         if(err) {
-                                            callback(null, false);
+                                            callback(null, 'false');
                                         }
                                         if(res.mucAdmin.items)
                                         {
@@ -125,18 +125,18 @@ module.exports = BaseCollection.extend({
                                                 return item.jid.bare;
                                             });
                                             var amMember = members.indexOf(client.jid.bare) > -1;
-                                            callback(null, amMember);
+                                            callback(null, amMember ? 'true' : 'false');
                                         }
                                         else
                                         {
-                                            callback(null, false);
+                                            callback(null, 'false');
                                         }
                                     })
                                 },
                                 function(callback) {
                                     client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'owner' } ] }, function (err, res) {
                                         if(err) {
-                                            callback(null, false);
+                                            callback(null, 'false');
                                         }
                                         if(res.mucAdmin.items)
                                         {
@@ -144,11 +144,11 @@ module.exports = BaseCollection.extend({
                                                 return item.jid.bare;
                                             });
                                             var amMember = members.indexOf(client.jid.bare) > -1;
-                                            callback(null, amMember);
+                                            callback(null, amMember ? 'true' : 'false');
                                         }
                                         else
                                         {
-                                            callback(null, false);
+                                            callback(null, 'false');
                                         }
                                     })
                                 }
