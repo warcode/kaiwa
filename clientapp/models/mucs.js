@@ -98,43 +98,58 @@ module.exports = BaseCollection.extend({
                                 function(callback) {
                                     client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'member' } ] }, function (err, res) {
                                         if(err) {
-                                            console.log(err);
                                             callback(null, false);
                                         }
-                                        console.log(res);
-                                        var members = res.mucAdmin.items.map(function (item) {
-                                            return item.jid.bare;
-                                        });
-                                        var amMember = members.indexOf(client.jid.bare) > -1;
-                                        callback(null, amMember);
+                                        if(res.mucAdmin.items)
+                                        {
+                                            var members = res.mucAdmin.items.map(function (item) {
+                                                return item.jid.bare;
+                                            });
+                                            var amMember = members.indexOf(client.jid.bare) > -1;
+                                            callback(null, amMember);
+                                        }
+                                        else
+                                        {
+                                            callback(null, false);
+                                        }
                                     })
                                 },
                                 function(callback) {
                                     client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'admin' } ] }, function (err, res) {
                                         if(err) {
-                                            console.log(err);
                                             callback(null, false);
                                         }
-                                        console.log(res);
-                                        var members = res.mucAdmin.items.map(function (item) {
-                                            return item.jid.bare;
-                                        });
-                                        var amMember = members.indexOf(client.jid.bare) > -1;
-                                        callback(null, amMember);
+                                        if(res.mucAdmin.items)
+                                        {
+                                            var members = res.mucAdmin.items.map(function (item) {
+                                                return item.jid.bare;
+                                            });
+                                            var amMember = members.indexOf(client.jid.bare) > -1;
+                                            callback(null, amMember);
+                                        }
+                                        else
+                                        {
+                                            callback(null, false);
+                                        }
                                     })
                                 },
                                 function(callback) {
                                     client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'owner' } ] }, function (err, res) {
                                         if(err) {
-                                            console.log(err);
                                             callback(null, false);
                                         }
-                                        console.log(res);
-                                        var members = res.mucAdmin.items.map(function (item) {
-                                            return item.jid.bare;
-                                        });
-                                        var amMember = members.indexOf(client.jid.bare) > -1;
-                                        callback(null, amMember);
+                                        if(res.mucAdmin.items)
+                                        {
+                                            var members = res.mucAdmin.items.map(function (item) {
+                                                return item.jid.bare;
+                                            });
+                                            var amMember = members.indexOf(client.jid.bare) > -1;
+                                            callback(null, amMember);
+                                        }
+                                        else
+                                        {
+                                            callback(null, false);
+                                        }
                                     })
                                 }
                             ],
