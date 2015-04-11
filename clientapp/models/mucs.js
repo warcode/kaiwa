@@ -157,16 +157,17 @@ module.exports = BaseCollection.extend({
                                 console.log(results);
                                 if(results.indexOf('true') > -1)
                                 {
-                                    console.log(mucInfo);
-                                    console.log(app)
-                                    console.log(app.mucInfos);
                                     app.mucInfos.push(mucInfo);
+                                    console.log(mucInfo);
+                                    console.log(app.mucInfos);
                                 }
                             });
                         }
                         else
                         {
                             app.mucInfos.push(mucInfo);
+                            console.log(mucInfo);
+                            onsole.log(app.mucInfos);
                         }
 
                       }).then(function() {
