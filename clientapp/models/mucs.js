@@ -74,8 +74,6 @@ module.exports = BaseCollection.extend({
 
                     rooms.forEach (function (room) {
                       client.getDiscoInfo(room.jid, '', function (err, res) {
-
-                        roomNum++;
                         if (err) return;
 
                         var features = res.discoInfo.features;
@@ -160,6 +158,7 @@ module.exports = BaseCollection.extend({
                                     app.mucInfos.push(mucInfo);
                                     console.log(mucInfo);
                                     console.log(app.mucInfos);
+                                    roomNum++;
                                 }
                             });
                         }
@@ -168,6 +167,7 @@ module.exports = BaseCollection.extend({
                             app.mucInfos.push(mucInfo);
                             console.log(mucInfo);
                             console.log(app.mucInfos);
+                            roomNum++;
                         }
 
                       }).then(function() {
