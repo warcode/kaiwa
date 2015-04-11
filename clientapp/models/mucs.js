@@ -96,7 +96,7 @@ module.exports = BaseCollection.extend({
                         {
 							async.parallel([
 								function(callback) {
-			                        client.getRoomMembers(theRoomJID, { items: [ { affiliation: 'member' } ] }, function (err, res) {
+			                        client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'member' } ] }, function (err, res) {
 									    var members = res.mucAdmin.items.map(function (item) {
 									        return item.jid;
 									    });
@@ -105,7 +105,7 @@ module.exports = BaseCollection.extend({
 									})
 		                    	},
 		                    	function(callback) {
-			                        client.getRoomMembers(theRoomJID, { items: [ { affiliation: 'admin' } ] }, function (err, res) {
+			                        client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'admin' } ] }, function (err, res) {
 									    var members = res.mucAdmin.items.map(function (item) {
 									        return item.jid;
 									    });
@@ -114,7 +114,7 @@ module.exports = BaseCollection.extend({
 									})
 		                    	},
 		                    	function(callback) {
-			                        client.getRoomMembers(theRoomJID, { items: [ { affiliation: 'owner' } ] }, function (err, res) {
+			                        client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'owner' } ] }, function (err, res) {
 									    var members = res.mucAdmin.items.map(function (item) {
 									        return item.jid;
 									    });
