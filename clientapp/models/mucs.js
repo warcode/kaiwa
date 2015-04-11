@@ -75,7 +75,6 @@ module.exports = BaseCollection.extend({
                     rooms.forEach (function (room) {
                       client.getDiscoInfo(room.jid, '', function (err, res) {
                         
-                        roomNum++;
                         if (err) return;
 
                         var features = res.discoInfo.features;
@@ -151,17 +150,24 @@ module.exports = BaseCollection.extend({
                                 console.log(results);
                                 if(results.indexOf('true') > -1) {
                                     app.mucInfos.push(mucInfo);
+                                    roomNum++;
+                                    if (cb && roomNum == rooms.length) cb();
                                 }
                             });
                         }
                         else
                         {
                             app.mucInfos.push(mucInfo);
+                            roomNum++;
+                            if (cb && roomNum == rooms.length) cb();
                         }
 
-                      }).then(function() {
+                      });
+/*
+                        .then(function() {
                         if (cb && roomNum == rooms.length) cb();
                       });
+*/
                     });
                 }).then(function() {
                     if (cb && !rooms.length) cb();
