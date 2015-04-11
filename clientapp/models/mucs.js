@@ -97,6 +97,10 @@ module.exports = BaseCollection.extend({
 							async.parallel([
 								function(callback) {
 			                        client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'member' } ] }, function (err, res) {
+			                        	if(err) {
+			                        		console.log(err);
+			                        		callback(null, false);
+			                        	}
 									    var members = res.mucAdmin.items.map(function (item) {
 									        return item.jid.bare;
 									    });
@@ -106,6 +110,10 @@ module.exports = BaseCollection.extend({
 		                    	},
 		                    	function(callback) {
 			                        client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'admin' } ] }, function (err, res) {
+			                        	if(err) {
+			                        		console.log(err);
+			                        		callback(null, false);
+			                        	}
 									    var members = res.mucAdmin.items.map(function (item) {
 									        return item.jid.bare;
 									    });
@@ -115,6 +123,10 @@ module.exports = BaseCollection.extend({
 		                    	},
 		                    	function(callback) {
 			                        client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'owner' } ] }, function (err, res) {
+			                        	if(err) {
+			                        		console.log(err);
+			                        		callback(null, false);
+			                        	}
 									    var members = res.mucAdmin.items.map(function (item) {
 									        return item.jid.bare;
 									    });
