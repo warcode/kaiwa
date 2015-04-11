@@ -92,12 +92,6 @@ module.exports = BaseCollection.extend({
                           persistent: persistent
                         };
 
-                        var pushMucInfo = function() {
-                            app.mucInfos.push(mucInfo);
-                            console.log(mucInfo);
-                            console.log(app.mucInfos);
-                        };
-
                         if(membersOnly)
                         {
                             async.parallel([
@@ -156,20 +150,24 @@ module.exports = BaseCollection.extend({
                                         {
                                             callback(null, 'false');
                                         }
-                                    })
+                                    }) 
                                 }
                             ],
                             function(err, results){
                                 console.log(results);
                                 if(results.indexOf('true') > -1)
                                 {
-                                    pushMucInfo();
+                                    app.mucInfos.push(mucInfo);
+                                    console.log(mucInfo);
+                                    console.log(app.mucInfos);
                                 }
                             });
                         }
                         else
                         {
-                            pushMucInfo();
+                            app.mucInfos.push(mucInfo);
+                            console.log(mucInfo);
+                            console.log(app.mucInfos);
                         }
 
                       }).then(function() {
