@@ -98,7 +98,7 @@ module.exports = BaseCollection.extend({
 								function(callback) {
 			                        client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'member' } ] }, function (err, res) {
 									    var members = res.mucAdmin.items.map(function (item) {
-									        return item.jid;
+									        return item.jid.bare;
 									    });
 									    var amMember = members.indexOf(client.jid.bare) > -1;
 									    callback(null, amMember);
@@ -107,7 +107,7 @@ module.exports = BaseCollection.extend({
 		                    	function(callback) {
 			                        client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'admin' } ] }, function (err, res) {
 									    var members = res.mucAdmin.items.map(function (item) {
-									        return item.jid;
+									        return item.jid.bare;
 									    });
 									    var amMember = members.indexOf(client.jid.bare) > -1;
 									    callback(null, amMember);
@@ -116,7 +116,7 @@ module.exports = BaseCollection.extend({
 		                    	function(callback) {
 			                        client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'owner' } ] }, function (err, res) {
 									    var members = res.mucAdmin.items.map(function (item) {
-									        return item.jid;
+									        return item.jid.bare;
 									    });
 									    var amMember = members.indexOf(client.jid.bare) > -1;
 									    callback(null, amMember);
