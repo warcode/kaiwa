@@ -92,6 +92,12 @@ module.exports = BaseCollection.extend({
                           persistent: persistent
                         };
 
+                        var pushMucInfo = function() {
+                            app.mucInfos.push(mucInfo);
+                            console.log(mucInfo);
+                            console.log(app.mucInfos);
+                        };
+
                         if(membersOnly)
                         {
                             async.parallel([
@@ -157,17 +163,13 @@ module.exports = BaseCollection.extend({
                                 console.log(results);
                                 if(results.indexOf('true') > -1)
                                 {
-                                    app.mucInfos.push(mucInfo);
-                                    console.log(mucInfo);
-                                    console.log(app.mucInfos);
+                                    pushMucInfo();
                                 }
                             });
                         }
                         else
                         {
-                            app.mucInfos.push(mucInfo);
-                            console.log(mucInfo);
-                            console.log(app.mucInfos);
+                            pushMucInfo();
                         }
 
                       }).then(function() {
