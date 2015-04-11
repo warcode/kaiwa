@@ -158,6 +158,8 @@ module.exports = BaseCollection.extend({
                                 if(results.indexOf('true') > -1)
                                 {
                                     console.log(mucInfo);
+                                    console.log(app)
+                                    console.log(app.mucInfos);
                                     app.mucInfos.push(mucInfo);
                                 }
                             });
