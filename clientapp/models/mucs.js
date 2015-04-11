@@ -78,7 +78,12 @@ module.exports = BaseCollection.extend({
                           persistent: true
                         };
 
-                        app.mucInfos.push(mucInfo);
+                        client.getRoomMembers(muc.jid.full, null, function(data){
+                            if(data.length > 0) {
+                                app.mucInfos.push(mucInfo);
+                            }
+                        });
+
                     });
                 });
 
