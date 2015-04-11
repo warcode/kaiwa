@@ -63,30 +63,6 @@ module.exports = BaseCollection.extend({
         if (SERVER_CONFIG.muc) {
             if (client.sessionStarted) {
 
-/*
-                client.getBookmarks(function (err, res) {
-                    if (err) return;
-    
-                    var mucs = res.privateStorage.bookmarks.conferences;
-                    mucs.forEach(function (muc) {
-
-                        var mucInfo = {
-                          id: muc.jid.full,
-                          name: muc.name,
-                          jid: muc.jid,
-                          nick: me.nick,
-                          autoJoin: true,
-                          persistent: true
-                        };
-                        
-                        var existing = app.mucInfos.map(function(a) {return a.jid;});
-                        if(existing.indexOf(mucInfo.jid) == -1) {
-                            app.mucInfos.push(mucInfo);    
-                        }
-                    });
-                });
-*/
-
                 var rooms = [];
                 client.getDiscoItems(SERVER_CONFIG.muc, '', function (err, res) {
                     if (err) return;
@@ -119,45 +95,44 @@ module.exports = BaseCollection.extend({
                         if(membersOnly)
                         {
 							async.parallel([
-		                        client.getRoomMembers(theRoomJID, { items: [ { affiliation: 'member' } ] }, function (err, res) {
-								    var members = res.mucAdmin.items.map(function (item) {
-								        return item.jid;
-								    });
-								    var amMember = members.indexOf(client.jid.bare) > -1;
-								    callback(null, amMember);
-								}),
-		                        client.getRoomMembers(theRoomJID, { items: [ { affiliation: 'admin' } ] }, function (err, res) {
-								    var members = res.mucAdmin.items.map(function (item) {
-								        return item.jid;
-								    });
-								    var amMember = members.indexOf(client.jid.bare) > -1;
-								    callback(null, amMember);
-								}),
-		                        client.getRoomMembers(theRoomJID, { items: [ { affiliation: 'owner' } ] }, function (err, res) {
-								    var members = res.mucAdmin.items.map(function (item) {
-								        return item.jid;
-								    });
-								    var amMember = members.indexOf(client.jid.bare) > -1;
-								    callback(null, amMember);
-								})
+								function(callback) {
+			                        client.getRoomMembers(theRoomJID, { items: [ { affiliation: 'member' } ] }, function (err, res) {
+									    var members = res.mucAdmin.items.map(function (item) {
+									        return item.jid;
+									    });
+									    var amMember = members.indexOf(client.jid.bare) > -1;
+									    callback(null, amMember);
+									})
+		                    	},
+		                    	function(callback) {
+			                        client.getRoomMembers(theRoomJID, { items: [ { affiliation: 'admin' } ] }, function (err, res) {
+									    var members = res.mucAdmin.items.map(function (item) {
+									        return item.jid;
+									    });
+									    var amMember = members.indexOf(client.jid.bare) > -1;
+									    callback(null, amMember);
+									})
+		                    	},
+		                    	function(callback) {
+			                        client.getRoomMembers(theRoomJID, { items: [ { affiliation: 'owner' } ] }, function (err, res) {
+									    var members = res.mucAdmin.items.map(function (item) {
+									        return item.jid;
+									    });
+									    var amMember = members.indexOf(client.jid.bare) > -1;
+									    callback(null, amMember);
+									})
+		                    	}
 							],
 							function(err, results){
 								if(results.indexOf('true') > -1)
 								{
-			                        var existing = app.mucInfos.map(function(a) {return a.jid;});
-	                        		if(existing.indexOf(mucInfo.jid) == -1) {
-	                            		app.mucInfos.push(mucInfo);
-	                        		}
+                        			app.mucInfos.push(mucInfo);
 								}
-
 							});
 						}
 						else
 						{
-	                        var existing = app.mucInfos.map(function(a) {return a.jid;});
-	                        if(existing.indexOf(mucInfo.jid) == -1) {
-	                            app.mucInfos.push(mucInfo);
-	                        }
+                        	app.mucInfos.push(mucInfo);
 						}
 
                       }).then(function() {
