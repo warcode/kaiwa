@@ -74,6 +74,8 @@ module.exports = BaseCollection.extend({
 
                     rooms.forEach (function (room) {
                       client.getDiscoInfo(room.jid, '', function (err, res) {
+                        
+                        roomNum++;
                         if (err) return;
 
                         var features = res.discoInfo.features;
@@ -92,22 +94,22 @@ module.exports = BaseCollection.extend({
 
                         if(membersOnly)
                         {
+                            var working = true;
+
                             async.parallel([
                                 function(callback) {
                                     client.getRoomMembers(mucInfo.jid, { items: [ { affiliation: 'member' } ] }, function (err, res) {
                                         if(err) {
                                             callback(null, 'false');
                                         }
-                                        if(res.mucAdmin.items)
-                                        {
+                                        if(res.mucAdmin.items) {
                                             var members = res.mucAdmin.items.map(function (item) {
                                                 return item.jid.bare;
                                             });
                                             var amMember = members.indexOf(client.jid.bare) > -1;
                                             callback(null, amMember ? 'true' : 'false');
                                         }
-                                        else
-                                        {
+                                        else {
                                             callback(null, 'false');
                                         }
                                     })
@@ -117,16 +119,14 @@ module.exports = BaseCollection.extend({
                                         if(err) {
                                             callback(null, 'false');
                                         }
-                                        if(res.mucAdmin.items)
-                                        {
+                                        if(res.mucAdmin.items) {
                                             var members = res.mucAdmin.items.map(function (item) {
                                                 return item.jid.bare;
                                             });
                                             var amMember = members.indexOf(client.jid.bare) > -1;
                                             callback(null, amMember ? 'true' : 'false');
                                         }
-                                        else
-                                        {
+                                        else {
                                             callback(null, 'false');
                                         }
                                     })
@@ -136,16 +136,14 @@ module.exports = BaseCollection.extend({
                                         if(err) {
                                             callback(null, 'false');
                                         }
-                                        if(res.mucAdmin.items)
-                                        {
+                                        if(res.mucAdmin.items) {
                                             var members = res.mucAdmin.items.map(function (item) {
                                                 return item.jid.bare;
                                             });
                                             var amMember = members.indexOf(client.jid.bare) > -1;
                                             callback(null, amMember ? 'true' : 'false');
                                         }
-                                        else
-                                        {
+                                        else {
                                             callback(null, 'false');
                                         }
                                     }) 
@@ -153,21 +151,19 @@ module.exports = BaseCollection.extend({
                             ],
                             function(err, results){
                                 console.log(results);
-                                if(results.indexOf('true') > -1)
-                                {
+                                if(results.indexOf('true') > -1) {
                                     app.mucInfos.push(mucInfo);
-                                    console.log(mucInfo);
-                                    console.log(app.mucInfos);
-                                    roomNum++;
                                 }
+                                working = false;
                             });
+
+                            while(working) {
+
+                            }
                         }
                         else
                         {
                             app.mucInfos.push(mucInfo);
-                            console.log(mucInfo);
-                            console.log(app.mucInfos);
-                            roomNum++;
                         }
 
                       }).then(function() {
