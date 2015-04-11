@@ -63,6 +63,7 @@ module.exports = BaseCollection.extend({
         if (SERVER_CONFIG.muc) {
             if (client.sessionStarted) {
 
+
                 client.getBookmarks(function (err, res) {
                     if (err) return;
     
@@ -77,12 +78,11 @@ module.exports = BaseCollection.extend({
                           autoJoin: true,
                           persistent: true
                         };
-
-                        client.getRoomMembers(muc.jid.full, me.jid, function(err, res){
-                            if(err) return;
-                            app.mucInfos.push(mucInfo);
-                        });
-
+                        
+                        var existing = app.mucInfos.map(function(a) {return a.jid;});
+                        if(existing.indexOf(mucInfo.jid) == -1) {
+                            app.mucInfos.push(mucInfo);    
+                        }
                     });
                 });
 
@@ -113,7 +113,10 @@ module.exports = BaseCollection.extend({
                           persistent: persistent
                         };
 
-                        app.mucInfos.push(mucInfo);
+                        var existing = app.mucInfos.map(function(a) {return a.jid;});
+                        if(existing.indexOf(mucInfo.jid) == -1) {
+                            app.mucInfos.push(mucInfo);
+                        }
 
                       }).then(function() {
                         if (cb && roomNum == rooms.length) cb();
@@ -122,6 +125,10 @@ module.exports = BaseCollection.extend({
                 }).then(function() {
                     if (cb && !rooms.length) cb();
                 });
+
+
+
+
 
             } else {
                 app.whenConnected(function () {
