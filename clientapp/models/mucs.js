@@ -150,9 +150,9 @@ module.exports = BaseCollection.extend({
                                 console.log(results);
                                 if(results.indexOf('true') > -1) {
                                     app.mucInfos.push(mucInfo);
-                                    roomNum++;
-                                    if (cb && roomNum == rooms.length) cb();
                                 }
+                                roomNum++;
+                                if (cb && roomNum == rooms.length) cb();
                             });
                         }
                         else
