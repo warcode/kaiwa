@@ -99,7 +99,7 @@ module.exports = BaseCollection.extend({
                                         if(err) {
                                             callback(null, 'false');
                                         }
-                                        if(res.mucAdmin.items) {
+                                        else if(res && res.mucAdmin && res.mucAdmin.items) {
                                             var members = res.mucAdmin.items.map(function (item) {
                                                 return item.jid.bare;
                                             });
@@ -116,7 +116,7 @@ module.exports = BaseCollection.extend({
                                         if(err) {
                                             callback(null, 'false');
                                         }
-                                        if(res.mucAdmin.items) {
+                                        else if(res && res.mucAdmin && res.mucAdmin.items) {
                                             var members = res.mucAdmin.items.map(function (item) {
                                                 return item.jid.bare;
                                             });
@@ -133,7 +133,7 @@ module.exports = BaseCollection.extend({
                                         if(err) {
                                             callback(null, 'false');
                                         }
-                                        if(res.mucAdmin.items) {
+                                        else if(res && res.mucAdmin && res.mucAdmin.items) {
                                             var members = res.mucAdmin.items.map(function (item) {
                                                 return item.jid.bare;
                                             });
