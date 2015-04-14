@@ -1,11 +1,11 @@
 section.page.chat
   section.group.conversation
-    if name == 'party'
+    if muc.name == 'party'
       video(autoplay='', loop='', id='bgvid').bgvid
         source(src='http://loli.dance/illya.webm', type='video/webm')
         source(src='http://loli.dance/illya.mp4', type='video/mp4')
     else
-      video(id='#{name}').nopartyhereboss
+      video(id='#{muc.name}').nopartyhereboss
     header.online
       .title
         span.prefix #
