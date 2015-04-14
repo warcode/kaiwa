@@ -44,6 +44,17 @@ module.exports = BasePage.extend({
         subject: 'header .status',
         membersCount: '#members_toggle_count'
     },
+    props: {
+        name: 'string'
+    },
+    derived: {
+        namec: {
+            deps: ['displayName'],
+            fn: function () {
+                return this.displayName;
+            }
+        }
+    },
     show: function (animation) {
         BasePage.prototype.show.apply(this, [animation]);
         client.sendMessage({
