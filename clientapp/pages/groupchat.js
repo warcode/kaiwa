@@ -12,7 +12,7 @@ var embedIt = require('../helpers/embedIt');
 var htmlify = require('../helpers/htmlify');
 var tempSubject = '';
 
-module.exports = BasePage.extend({
+var groupchat = module.exports = BasePage.extend({
     template: templates.pages.groupchat,
     initialize: function (spec) {
         this.editMode = false;
