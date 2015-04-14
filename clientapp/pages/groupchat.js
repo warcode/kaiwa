@@ -12,7 +12,7 @@ var embedIt = require('../helpers/embedIt');
 var htmlify = require('../helpers/htmlify');
 var tempSubject = '';
 
-var plzchat = module.exports = BasePage.extend({
+module.exports = BasePage.extend({
     template: templates.pages.groupchat,
     initialize: function (spec) {
         this.editMode = false;
@@ -44,16 +44,8 @@ var plzchat = module.exports = BasePage.extend({
         subject: 'header .status',
         membersCount: '#members_toggle_count'
     },
-    props: {
-        name: 'string'
-    },
-    derived: {
-        namec: {
-            deps: ['displayName'],
-            fn: function () {
-                return this.displayName;
-            }
-        }
+    party: function() {
+        this.displayName;
     },
     show: function (animation) {
         BasePage.prototype.show.apply(this, [animation]);
