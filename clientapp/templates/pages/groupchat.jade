@@ -1,6 +1,7 @@
+var partyChannel = #{groupchat.namec}
 section.page.chat
   section.group.conversation
-    if #{groupchat.namec} == 'party'
+    if partyChannel == 'party'
       video(autoplay='', loop='', id='bgvid').bgvid
         source(src='http://loli.dance/illya.webm', type='video/webm')
         source(src='http://loli.dance/illya.mp4', type='video/mp4')
