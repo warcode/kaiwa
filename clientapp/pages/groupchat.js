@@ -45,7 +45,7 @@ module.exports = BasePage.extend({
         membersCount: '#members_toggle_count'
     },
     party: function() {
-        this.displayName;
+        return this.displayName;
     },
     show: function (animation) {
         BasePage.prototype.show.apply(this, [animation]);
