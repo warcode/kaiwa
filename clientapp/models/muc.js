@@ -11,7 +11,7 @@ var Messages = require('./messages');
 var Message = require('./message');
 var avatarHandler = require('../helpers/avatarHandler');
 
-module.exports = HumanModel.define({
+var Muc = module.exports = HumanModel.define({
     initialize: function (attrs) {
         if (attrs.jid) {
             this.id = attrs.jid.full;
