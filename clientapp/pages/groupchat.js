@@ -373,6 +373,12 @@ module.exports = BasePage.extend({
                 this.staydown.append(newEl[0]);
                 this.lastModel = model;
             }
+
+            if(this.$messageList.length > 300) {
+                var elementToRemove = this.$messageList.find('li').first();
+                elementToRemove.remove();
+            }
+
             if (!model.pending) embedIt(newEl);
         }
         else {
@@ -398,6 +404,12 @@ module.exports = BasePage.extend({
                 firstEl.after(newEl[0]);
                 this.firstModel = model;
             }
+
+            if(this.$messageList.length > 300) {
+                var elementToRemove = this.$messageList.find('li').first();
+                elementToRemove.remove();
+            }
+
             if (!model.pending) embedIt(newEl);
 
             this.$messageList.scrollTop(this.$messageList.prop('scrollHeight') - scrollDown);
