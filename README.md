@@ -1,3 +1,7 @@
+# This is a fork of Kaiwa
+
+Wanting to keep the initial design, as well as add improvements of my own.
+
 # Kaiwa
 
 Kaiwa is an open source web client for XMPP.
