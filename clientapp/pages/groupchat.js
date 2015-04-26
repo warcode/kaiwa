@@ -295,16 +295,6 @@ module.exports = BasePage.extend({
                 'invite'
                 ];
 
-                var cmdclear = function() {
-                    this.$messageList.find('li').remove();
-                };
-
-                var cmdtopic = function(data) {
-                    var subject = $('section.conversation').find('span.status');
-                    client.setSubject(model.jid, data);
-                    subject.text(data);
-                };
-
                 var match = val.match(/^\/([^\s]+)(?:\s+(.*))?$/m);
                 var command = match[1];
                 var data = match[2];
@@ -313,10 +303,12 @@ module.exports = BasePage.extend({
                     switch(command)
                     {
                         case 'clear':
-                            cmdclear();
+                            this.$messageList.find('li').remove();
                             break;
                         case 'topic':
-                            cmdtopic(data);
+                            var subject = $('section.conversation').find('span.status');
+                            client.setSubject(this.model.jid, data);
+                            subject.text(data);
                             break;
                         default:
                             break;
