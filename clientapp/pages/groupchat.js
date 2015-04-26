@@ -289,22 +289,31 @@ module.exports = BasePage.extend({
             if(val[0] == '/') {
 
                 var commands = [
-                'join',
-                'part',
                 'clear',
                 'topic',
-                'available',
-                'away',
-                'dnd',
+                'password',
+                'invite'
                 ];
+
+                var cmdfunctions = {};
+
+                cmdfunctions.clear = function() {
+                    this.$messageList.clear();
+                };
+
+                cmdfunctions.topic = function(data) {
+                    var subject = $('section.conversation').find('span.status');
+                    client.setSubject(this.model.jid, data);
+                    subject.text(data);
+                };
 
                 var match = val.match(/^\/([^\s]+)(?:\s+(.*))?$/m);
                 var command = match[1];
                 var data = match[2];
 
                 if ($.inArray(command, commands) != -1) {
-                    //self[command](data);
-                    alert("Accepted command: " + command);
+                    cmdfunctions[command](data);
+
                 } else {
                     // TODO: Better way to notify the user of the invalid command
                     alert("Invalid command: " + command);
