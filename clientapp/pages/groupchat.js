@@ -296,7 +296,7 @@ module.exports = BasePage.extend({
                 'available',
                 'away',
                 'dnd',
-                ]
+                ];
 
                 var match = val.match(/^\/([^\s]+)(?:\s+(.*))?$/m);
                 var command = match[1];
