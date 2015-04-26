@@ -295,15 +295,13 @@ module.exports = BasePage.extend({
                 'invite'
                 ];
 
-                var cmdfunctions = {};
-
                 var cmdclear = function() {
-                    this.$messageList.clear();
+                    this.$messageList.find('li').remove();
                 };
 
                 var cmdtopic = function(data) {
                     var subject = $('section.conversation').find('span.status');
-                    client.setSubject(this.model.jid, data);
+                    client.setSubject(model.jid, data);
                     subject.text(data);
                 };
 
