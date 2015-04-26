@@ -297,11 +297,11 @@ module.exports = BasePage.extend({
 
                 var cmdfunctions = {};
 
-                cmdfunctions.clear = function() {
+                var cmdclear = function() {
                     this.$messageList.clear();
                 };
 
-                cmdfunctions.topic = function(data) {
+                var cmdtopic = function(data) {
                     var subject = $('section.conversation').find('span.status');
                     client.setSubject(this.model.jid, data);
                     subject.text(data);
@@ -312,8 +312,17 @@ module.exports = BasePage.extend({
                 var data = match[2];
 
                 if ($.inArray(command, commands) != -1) {
-                    cmdfunctions[command](data);
-
+                    switch(command)
+                    {
+                        case 'clear':
+                            cmdclear();
+                            break;
+                        case 'topic':
+                            cmdtopic(data);
+                            break;
+                        default:
+                            break;
+                    }
                 } else {
                     // TODO: Better way to notify the user of the invalid command
                     alert("Invalid command: " + command);
