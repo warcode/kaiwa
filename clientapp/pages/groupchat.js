@@ -285,6 +285,39 @@ module.exports = BasePage.extend({
         var val = this.$chatInput.val();
 
         if (val) {
+
+            if(val[0] == '/') {
+
+                var commands = [
+                'join',
+                'part',
+                'clear',
+                'topic',
+                'available',
+                'away',
+                'dnd',
+                ]
+
+                var match = val.match(/^\/([^\s]+)(?:\s+(.*))?$/m);
+                var command = match[1];
+                var data = match[2];
+
+                if ($.inArray(command, self.commands) != -1) {
+                    //self[command](data);
+                    alert("Accepted command: " + command);
+                } else {
+                    // TODO: Better way to notify the user of the invalid command
+                    alert("Invalid command: " + command);
+                }
+
+                this.editMode = false;
+                this.typing = false;
+                this.paused = false;
+                this.$chatInput.removeClass('editing');
+                this.$chatInput.val('');
+                return;
+            }
+
             this.staydown.intend_down = true;
 
             var links = _.map(htmlify.collectLinks(val), function (link) {
