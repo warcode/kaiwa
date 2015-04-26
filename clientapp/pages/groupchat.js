@@ -302,7 +302,7 @@ module.exports = BasePage.extend({
                 var command = match[1];
                 var data = match[2];
 
-                if ($.inArray(command, self.commands) != -1) {
+                if ($.inArray(command, commands) != -1) {
                     //self[command](data);
                     alert("Accepted command: " + command);
                 } else {
