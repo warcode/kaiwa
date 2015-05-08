@@ -9,7 +9,7 @@ module.exports = function ($html, cb) {
         maxWidth: 750,
         maxHeight: 525,
         beforeEmbed: function(oembedData) {
-            oembedData.code = oembedData.code.innerHTML.replace("http:", "https:");
+            oembedData.code = oembedData.code[0].innerHTML.replace("http:", "https:");
         },
         afterEmbed: function(container, oembedData) {
             this.parent().parent().parent().show();
