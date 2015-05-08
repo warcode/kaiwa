@@ -8,7 +8,7 @@ module.exports = function ($html, cb) {
         includeHandle: false,
         maxWidth: 750,
         maxHeight: 525,
-        beforeEmbed: function(oembedData) {
+        beforeEmbed: function(container, oembedData) {
             oembedData.code = oembedData.code.replace("http:", "https:");
         },
         afterEmbed: function(container, oembedData) {
